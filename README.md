@@ -1,6 +1,6 @@
 # Useful K8s commands
 
-## Start `minukube`
+## Start `minikube`
 
 1. `minikube start --vm=true`
 
