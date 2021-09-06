@@ -1,0 +1,25 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  name: seldon-serving
+  namespace: seldon-app
+spec:
+  name: test-deployment
+  predictors:
+  - graph:
+      children: []
+      endpoint:
+        type: REST
+      name: predictor
+      type: MODEL
+    name: example
+    replicas: 1
+    componentSpecs:
+    - spec:
+        containers:
+        - name: predictor
+          image: seldon-app:latest
+          imagePullPolicy: IfNotPresent
+          env:
+          - name: VERSION
+            value: "v1.0"

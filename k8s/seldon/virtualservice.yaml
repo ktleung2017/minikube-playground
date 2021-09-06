@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: virtual-service-http
+  namespace: seldon-app
+spec:
+  gateways:
+  - istio-system/seldon-gateway
+  hosts:
+  - 'seldon-app.com'
+  http:
+  - route:
+    - destination:
+        host: seldon-serving-example
+        port:
+          number: 8000
+        subset: example
