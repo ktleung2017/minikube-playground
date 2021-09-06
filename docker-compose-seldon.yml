@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  serving:
+    image: seldon-app:latest
+    environment:
+    - ENV=dev
+    ports:
+    - '6000:6000'
+    - '9000:9000'

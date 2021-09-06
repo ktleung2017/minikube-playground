@@ -1,0 +1,13 @@
+FROM python:3.8.11-slim
+
+WORKDIR /opt/program
+
+COPY seldon/ .
+
+RUN pip install -r requirements.txt
+
+ENV MODEL_NAME=server.MLServer \
+    SERVICE_TYPE=MODEL \
+    PERSISTENCE=0
+
+ENTRYPOINT exec seldon-core-microservice $MODEL_NAME --service-type $SERVICE_TYPE --persistence $PERSISTENCE
